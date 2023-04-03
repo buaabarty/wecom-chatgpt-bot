@@ -10,10 +10,10 @@ redis_client = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT)
 chatbots = ExpiringDict(1800) # set the expiring time of conversation as 1800 seconds
 
 def set_access_token(token, expires_in):
-    redis_client.set('wecom_access_token_jsk', token, ex=expires_in)
+    redis_client.set('wecom_access_token_bot', token, ex=expires_in)
 
 def get_access_token():
-    return redis_client.get('wecom_access_token_jsk')
+    return redis_client.get('wecom_access_token_bot')
 
 def request_access_token(corp_id, corp_secret):
     url = f'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corp_id}&corpsecret={corp_secret}'
