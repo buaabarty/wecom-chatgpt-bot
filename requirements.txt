@@ -1,0 +1,6 @@
+django==4.1.7
+wechatpy==1.8.18
+revChatGPT==4.0.6.1
+redis==4.5.3
+celery==5.2.7
+cryptography==3.4.8
