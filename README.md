@@ -9,7 +9,7 @@
 
 如果你有新功能需求，可以在 [issues](https://github.com/buaabarty/wecom-chatgpt-bot/issues) 里提出；如果你希望为项目做贡献，可以直接提交 pull request。
 
-操作系统：Ubuntu 20.04
+操作系统：Ubuntu 22.04
 
 0. 前置准备：
 - OPENAI API 账号申请
