@@ -1,0 +1,36 @@
+services:
+  django:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./wechat_auto_reply:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydb
+
+  redis:
+    image: redis:latest
+
+  celery:
+    build: .
+    command: celery -A myproject worker --loglevel=info -c 1
+    volumes:
+      - ./wechat_auto_reply:/app
+    depends_on:
+      - redis
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - django

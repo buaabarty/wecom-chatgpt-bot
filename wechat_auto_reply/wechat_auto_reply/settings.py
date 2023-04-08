@@ -37,15 +37,15 @@ CHAT_ERROR_MESSAGE = 'GPT API 压力大，请稍后再试' # change to your own 
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-oiizqyaszf8ha+t#=8720&3tw7&=6r=txlfe)=$p)gfkv6+w-w'
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-REDIS_HOST = 'localhost'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+REDIS_HOST = 'redis'
 REDIS_PORT = 6379
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
