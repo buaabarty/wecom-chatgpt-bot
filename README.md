@@ -15,26 +15,15 @@
 - OPENAI API 账号申请
 - 企业认证的企业微信账号
 - 企业名下备案的域名
+- 部署所在机器的系统内安装`git`、`docker`、`docker-compose`。
 
 > 如果你不是在企业内进行配置，并且未来有长期使用 ChatGPT 的打算，建议自己或联合朋友们注册一个公司并进行企业微信认证，以及注册个域名进行域名备案，这样长期来看是最保险的。如果觉得来不及，可以借用朋友的企业进行开发。非常不建议用非官方的方式配置企业微信机器人，存在被封号的风险。
 
-1. 修改 supervisor 配置，将`wechat.conf`中的`wecom-chatgpt-bot`所在目录修改为实际目录位置；修改 nginx 配置，将`bot.conf`中的`yourdomain.com`修改为实际域名（包含二级域名，如果有）。
+1. 修改配置：
 
-2. 安装软件：
+首先修改`nginx/default.conf`中的`server_name`为你准备好的域名。
 
-```bash
-apt install python3-pip redis-server nginx supervisor
-cp conf/bot.conf /etc/nginx/conf.d/
-cp conf/wechat.conf /etc/supervisor/conf.d/
-nginx -s reload
-supervisorctl reload
-cd wechat_auto_reply && pip3 install -r requirements.txt
-```
-
-
-3. 修改配置文件
-
-上线前，你需要在`settings.py`中填入对应的信息，具体如下表所示：
+并在`settings.py`中填入对应的信息，具体如下表所示：
 
 | 字段 | 含义 | 是否必须修改 |
 |-|-|-|
@@ -49,19 +38,14 @@ cd wechat_auto_reply && pip3 install -r requirements.txt
 |`CHAT_RESET_MESSAGE_RESULT`|重置对话后返回的结果|否|
 |`CHAT_ERROR_MESSAGE`|请求错误（如超出频率限制、欠费等）后返回的结果|否|
 
-
-4. 初始化
-```bash
-python3 manage.py migrate
+2. 启动服务：
+```
+docker-compose up -d
 ```
 
-5. 启动/重启服务：
+3. 修改你的域名 DNS 解析，到部署机器所在 IP。
+4. 进入企业微信应用后台的「API 接收消息」设置，填入对应信息，点击保存。注：如果 nginx 中配置的域名是 `a.yourdomain.com`，则接收消息中设置的 url 为 `a.yourdomain.com/wechat/`
+5. 进入企业微信应用后台的「企业可信 IP」设置，填入部署机器所在 IP。
+6. 在企业微信中找到对应的应用，发送消息，测试部署效果。
 
-```bash
-supervisorctl restart all
-```
-
-6. 修改你的域名 DNS 解析，到部署机器所在 IP。
-7. 进入企业微信应用后台的「API 接收消息」设置，填入对应信息，点击保存。注：如果 nginx 中配置的域名是 `a.yourdomain.com`，则接收消息中设置的 url 为 `a.yourdomain.com/wechat/`
-8. 进入企业微信应用后台的「企业可信 IP」设置，填入部署机器所在 IP。
-9. 在企业微信中找到对应的应用，发送消息，完成部署。
+![](demo.jpg)

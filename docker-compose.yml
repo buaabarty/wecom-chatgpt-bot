@@ -1,3 +1,5 @@
+version: "3.3"
+
 services:
   django:
     build: .
@@ -22,7 +24,7 @@ services:
 
   celery:
     build: .
-    command: celery -A myproject worker --loglevel=info -c 1
+    command: celery -A wechat_auto_reply worker --loglevel=info -c 1
     volumes:
       - ./wechat_auto_reply:/app
     depends_on:
