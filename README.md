@@ -37,6 +37,13 @@
 |`CHAT_RESET_MESSAGE`|触发重置对话的消息内容，全文匹配|否|
 |`CHAT_RESET_MESSAGE_RESULT`|重置对话后返回的结果|否|
 |`CHAT_ERROR_MESSAGE`|请求错误（如超出频率限制、欠费等）后返回的结果|否|
+|`CHAT_GOOGLE_ERROR_MESSAGE`|谷歌搜索过程异常后返回的结果|否|
+|`GOOGLE_API_KEY`|如何设置请参考 [文档](https://significant-gravitas.github.io/Auto-GPT/configuration/search/)|是|
+|`CUSTOM_SEARCH_ENGINE_ID`|如何设置请参考 [文档](https://significant-gravitas.github.io/Auto-GPT/configuration/search/)|是|
+|`SEARCH_OPTIONS_COUNT`|每次搜索结果的数量，默认为 $3$|否|
+|`SEARCH_PROMPT`|在搜索模式下的首句提示信息|否|
+|`SEARCH_CONCLUTION_PROMPT`|在搜索模式下的末句提示信息|否|
+|`SEARCH_TOKEN`|触发搜索模式的单词，包含则触发|否|
 
 2. 启动服务：
 ```

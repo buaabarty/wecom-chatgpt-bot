@@ -26,11 +26,22 @@ WEWORK_AGENT_ID = 1000000
 OPENAI_API_KEY = '123456' # fill in your openai api key
 OPENAI_GPT_ENGINE = 'gpt-4' # gpt-4, gpt-4-0314, gpt-4-32k, gpt-4-32k-0314, gpt-3.5-turbo, gpt-3.5-turbo-0310
 OPENAI_SYSTEM_PROMPT = '你是江南皮革厂自研的JNGPT，基于国产自研大模型实现，接下来用中文进行对话，适量使用emoji，并用尽可能简短的文字来回答。' # change to your own system prompt
+OPENAI_SEARCH_PROMPT = '你需要结合一些网络上检索到的信息和你已经掌握的知识库，对一个问题给出尽可能简洁、思考再三后的解答。'
 
 # chat configurations
 CHAT_RESET_MESSAGE = '重置对话' # change to your own reset message
 CHAT_RESET_MESSAGE_RESULT = '重置对话成功！' # change to your own reset message result
 CHAT_ERROR_MESSAGE = 'GPT API 压力大，请稍后再试' # change to your own error message
+CHAT_GOOGLE_ERROR_MESSAGE = '联网计算失败，请稍后重试！' # change to your own error message after google search
+
+# google api configurations
+# 可以参考 https://significant-gravitas.github.io/Auto-GPT/configuration/search/
+GOOGLE_API_KEY = 'zbxlkjselgjkxb0s9dgljejk23'
+CUSTOM_SEARCH_ENGINE_ID = '8b23bsdo'
+SEARCH_OPTIONS_COUNT = 3
+SEARCH_PROMPT = '请先阅读以下几段网络上搜索到的材料，然后回答问题：'
+SEARCH_CONCLUTION_PROMPT = '请根据以上信息，并结合你自己目前掌握的知识库，回答一个问题：'
+SEARCH_TOKEN = ['搜一下', '搜一搜', '联网', '连网']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
