@@ -4,3 +4,5 @@ revChatGPT==4.0.6.1
 redis==4.5.3
 celery==5.2.7
 cryptography==3.4.8
+googlesearch-python==1.2.3
+trafilatura==1.5.0
