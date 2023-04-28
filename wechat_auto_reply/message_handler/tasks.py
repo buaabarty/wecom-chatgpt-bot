@@ -43,11 +43,9 @@ def fetch_access_token(corp_id, corp_secret):
             print("Failed to get access token.")
 
 def send_with_content(chatbot, contents, prompt):
-    if len(contents) > 0:
-        chatbot.add_to_conversation(settings.SEARCH_PROMPT + '\n' + contents[0][:1024], 'user')
-    if len(contents) > 1:
-        for content in contents[1:]:
-            chatbot.add_to_conversation(content[:1024], 'user')
+    chatbot.add_to_conversation(settings.SEARCH_PROMPT + '\n' + contents[0][:1024], 'user')
+    for content in contents[1:]:
+        chatbot.add_to_conversation(content[:1024], 'user')
     response = ""
     for query in chatbot.ask_stream(settings.SEARCH_CONCLUTION_PROMPT + '\n' + prompt):
         response += query
