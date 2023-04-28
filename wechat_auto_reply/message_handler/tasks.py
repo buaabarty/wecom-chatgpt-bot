@@ -44,12 +44,12 @@ def fetch_access_token(corp_id, corp_secret):
 
 def send_with_content(chatbot, contents, prompt):
     if len(contents) > 0:
-        chatbot.add_to_conversation('请先阅读以下几段网络上搜索到的材料，然后回答问题：\n' + contents[0][:1024], 'user')
+        chatbot.add_to_conversation(settings.SEARCH_PROMPT + '\n' + contents[0][:1024], 'user')
     if len(contents) > 1:
         for content in contents[1:]:
             chatbot.add_to_conversation(content[:1024], 'user')
     response = ""
-    for query in chatbot.ask_stream('请根据以上信息，并结合你自己目前掌握的知识库，回答一个问题：\n' + prompt):
+    for query in chatbot.ask_stream(settings.SEARCH_CONCLUTION_PROMPT + '\n' + prompt):
         response += query
     return response
 

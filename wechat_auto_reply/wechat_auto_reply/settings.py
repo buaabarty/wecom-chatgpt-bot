@@ -39,6 +39,8 @@ CHAT_GOOGLE_ERROR_MESSAGE = '联网计算失败，请稍后重试！' # change t
 GOOGLE_API_KEY = 'zbxlkjselgjkxb0s9dgljejk23'
 CUSTOM_SEARCH_ENGINE_ID = '8b23bsdo'
 SEARCH_OPTIONS_COUNT = 3
+SEARCH_PROMPT = '请先阅读以下几段网络上搜索到的材料，然后回答问题：'
+SEARCH_CONCLUTION_PROMPT = '请根据以上信息，并结合你自己目前掌握的知识库，回答一个问题：'
 SEARCH_TOKEN = ['搜一下', '搜一搜', '联网', '连网']
 
 # Quick-start development settings - unsuitable for production
